@@ -33,6 +33,8 @@ public class FormMain extends JFrame {
                 g2d.fillRect(0, 0, PanelPaint.getWidth(), PanelPaint.getHeight());
                 Bus bus = new Bus(10, PanelPaint.getWidth() / 2, PanelPaint.getHeight() / 2 + 75, Color.WHITE);
                 bus.draw(g2d);
+                Bus bus1 = new Bus(12, PanelPaint.getWidth() / 2, PanelPaint.getHeight() / 2 + 600, Color.WHITE);
+                bus1.draw(g2d);
             }
         };
 
