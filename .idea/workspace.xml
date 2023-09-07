@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4f2c2bac-a28a-453f-a18f-621f5500f567" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/ru/cs/vsu/yachnyy_m_a/graphics/Boat.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ru/cs/vsu/yachnyy_m_a/graphics/City.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ru/cs/vsu/yachnyy_m_a/graphics/Road.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ru/cs/vsu/yachnyy_m_a/FormMain.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/cs/vsu/yachnyy_m_a/FormMain.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ru/cs/vsu/yachnyy_m_a/FormMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/cs/vsu/yachnyy_m_a/FormMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ru/cs/vsu/yachnyy_m_a/graphics/Bus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/cs/vsu/yachnyy_m_a/graphics/Bus.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -79,12 +84,20 @@
       <option name="project" value="LOCAL" />
       <updated>1693815441234</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Bus drawing finished">
+      <created>1693940691508</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1693940691508</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial" />
-    <option name="LAST_COMMIT_MESSAGE" value="initial" />
+    <MESSAGE value="Bus drawing finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bus drawing finished" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>
