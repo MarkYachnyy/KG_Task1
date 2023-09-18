@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4f2c2bac-a28a-453f-a18f-621f5500f567" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/ru/cs/vsu/yachnyy_m_a/graphics/DrawPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/cs/vsu/yachnyy_m_a/FormMain.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/cs/vsu/yachnyy_m_a/FormMain.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/cs/vsu/yachnyy_m_a/FormMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/cs/vsu/yachnyy_m_a/FormMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ru/cs/vsu/yachnyy_m_a/graphics/Bus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/cs/vsu/yachnyy_m_a/graphics/Bus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ru/cs/vsu/yachnyy_m_a/graphics/DrawPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/cs/vsu/yachnyy_m_a/graphics/DrawPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
