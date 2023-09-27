@@ -16,10 +16,12 @@ public class DrawPanel extends JPanel implements ActionListener {
     private int RoadOffset = 0;
     private int CityOffset = 0;
 
+    private City city;
     private java.util.Queue<Boat> boats;
     private final double BoatSpawnChance = 0.001;
 
-    public DrawPanel(){
+    public DrawPanel() {
+        city = new City(0,0, this.getWidth(), this.getHeight() - ROAD_HEIGHT - RIVER_HEIGHT);
         AnimationTimer = new Timer(15, this);
         boats = new LinkedList<>();
         AnimationTimer.start();
@@ -33,26 +35,27 @@ public class DrawPanel extends JPanel implements ActionListener {
         g2d.setColor(Color.BLUE);
         g2d.fillRect(0, 0, this.getWidth(), this.getHeight());
 
-        City city = new City(CityOffset - City.SECTION_WIDTH,0, this.getWidth() + City.SECTION_WIDTH, this.getHeight() - ROAD_HEIGHT - RIVER_HEIGHT);
+//        City city = new City(CityOffset - City.SECTION_WIDTH, 0, this.getWidth() + City.SECTION_WIDTH, this.getHeight() - ROAD_HEIGHT - RIVER_HEIGHT);
+        city.setHeight(this.getHeight() - ROAD_HEIGHT - RIVER_HEIGHT);
+        city.setWidth(this.getWidth());
         city.draw(g2d);
 
-
-        for(Boat boat: boats){
+        for (Boat boat : boats) {
             boat.draw(g2d);
         }
 
-        Road road = new Road(RoadOffset - Road.SECTION_WIDTH,this.getHeight() - ROAD_HEIGHT, this.getWidth() + Road.SECTION_WIDTH, ROAD_HEIGHT);
+        Road road = new Road(RoadOffset - Road.SECTION_WIDTH, this.getHeight() - ROAD_HEIGHT, this.getWidth() + Road.SECTION_WIDTH, ROAD_HEIGHT);
         road.draw(g2d);
 
         Bus bus = new Bus(10, this.getWidth() / 2, this.getHeight() - ROAD_HEIGHT * 3 / 4, Color.GREEN);
         bus.draw(g2d);
     }
 
-    private void moveBoats(){
-        for (Boat boat: boats){
+    private void moveBoats() {
+        for (Boat boat : boats) {
             boat.setXlb(boat.getXlb() + boat.getVelocity());
         }
-        if(boats.size() > 0 && boats.peek().getXlb() > this.getWidth()){
+        if (boats.size() > 0 && boats.peek().getXlb() > this.getWidth()) {
             boats.poll();
         }
     }
@@ -62,11 +65,12 @@ public class DrawPanel extends JPanel implements ActionListener {
         RoadOffset = (RoadOffset + 20) % Road.SECTION_WIDTH;
         CityOffset = (CityOffset + 1) % City.SECTION_WIDTH;
 
-        if(Math.random() < BoatSpawnChance){
-            boats.add(new Boat(-Boat.WIDTH, this.getHeight() - ROAD_HEIGHT - RIVER_HEIGHT/2 + (RIVER_HEIGHT/4 - new Random().nextInt(RIVER_HEIGHT/2)), 2));
+        if (Math.random() < BoatSpawnChance) {
+            boats.add(new Boat(-Boat.WIDTH, this.getHeight() - ROAD_HEIGHT - RIVER_HEIGHT / 2 + (RIVER_HEIGHT / 4 - new Random().nextInt(RIVER_HEIGHT / 2)), 2));
         }
 
         moveBoats();
+        city.moveRight(1);
         DrawPanel.this.repaint();
     }
 }

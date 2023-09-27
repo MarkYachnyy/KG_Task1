@@ -5,9 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4f2c2bac-a28a-453f-a18f-621f5500f567" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_09_2023_11_33_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_09_2023_11_33__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ru/cs/vsu/yachnyy_m_a/graphics/Bus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/cs/vsu/yachnyy_m_a/graphics/Bus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ru/cs/vsu/yachnyy_m_a/graphics/City.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/cs/vsu/yachnyy_m_a/graphics/City.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ru/cs/vsu/yachnyy_m_a/graphics/DrawPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/cs/vsu/yachnyy_m_a/graphics/DrawPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

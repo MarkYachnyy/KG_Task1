@@ -7,7 +7,8 @@ import java.awt.*;
 public class Bus {
     private int route, x, y;
     private Color MAIN_COLOR;
-    private Color GLASS_COLOR = new Color(168, 216, 255, 225);
+    private Color GLASS_COLOR = new Color(168, 216, 255, 150);
+    private Color SKIN_COLOR = new Color(246, 215, 197);
     private Font DEFAULT_FONT = new Font("Arial", Font.PLAIN, LABEL_HEIGHT - 10);
 
     private static int BUS_LENGTH = 700;
@@ -34,67 +35,8 @@ public class Bus {
     }
 
     public void draw(Graphics2D g2d) {
-
-        g2d.setColor(MAIN_COLOR);
-        Polygon polygon1 = new Polygon();
-        polygon1.addPoint(x - BUS_LENGTH / 2, y);
-        polygon1.addPoint(x - BUS_LENGTH / 2, y - ARC_RADIUS - 20);
-        polygon1.addPoint(x - BUS_LENGTH / 2 + OFFSET_FRONT_BACK, y - BUS_HEIGHT);
-        polygon1.addPoint(x + BUS_LENGTH / 2 - OFFSET_FRONT_BACK, y - BUS_HEIGHT);
-        polygon1.addPoint(x + BUS_LENGTH / 2, y - BUS_HEIGHT + 50);
-        polygon1.addPoint(x + BUS_LENGTH / 2, y - 10);
-        polygon1.addPoint(x + BUS_LENGTH / 2 - 40, y);
-        //g2d.fillPolygon(polygon1);
-
-        Polygon colorPolygon1 = new Polygon();
-        colorPolygon1.addPoint(x - BUS_LENGTH / 2, y);
-        colorPolygon1.addPoint(x - BUS_LENGTH / 2, y - ARC_RADIUS - 20);
-        colorPolygon1.addPoint(x + BUS_LENGTH / 2, y - ARC_RADIUS - 20);
-        colorPolygon1.addPoint(x + BUS_LENGTH / 2, y - 10);
-        colorPolygon1.addPoint(x + BUS_LENGTH / 2 - 40, y);
-        g2d.fillPolygon(colorPolygon1);
-
-        Polygon colorPolygon2 = new Polygon();
-        colorPolygon2.addPoint(x - BUS_LENGTH / 2, y - ARC_RADIUS - 20);
-        colorPolygon2.addPoint(x - BUS_LENGTH / 2 + OFFSET_FRONT_BACK, y - BUS_HEIGHT);
-        colorPolygon2.addPoint(x + BUS_LENGTH / 2 - OFFSET_FRONT_BACK, y - BUS_HEIGHT);
-        colorPolygon2.addPoint(x + BUS_LENGTH / 2, y - BUS_HEIGHT + 50);
-        colorPolygon2.addPoint(x + BUS_LENGTH / 2, y - ARC_RADIUS - 20);
-        colorPolygon2.addPoint(x + BUS_LENGTH / 2 - OFFSET_FRONT_BACK * 3, y - ARC_RADIUS - 20);
-        colorPolygon2.addPoint(x + BUS_LENGTH / 2 - OFFSET_FRONT_BACK * 3, y - BUS_HEIGHT + OFFSET_FRONT_BACK * 2);
-        colorPolygon2.addPoint(x - BUS_LENGTH / 2 + OFFSET_FRONT_BACK * 3, y - BUS_HEIGHT + OFFSET_FRONT_BACK * 2);
-        colorPolygon2.addPoint(x - BUS_LENGTH / 2 + OFFSET_FRONT_BACK * 2, y - ARC_RADIUS - 20);
-        g2d.fillPolygon(colorPolygon2);
-
-        drawWheelAndArc(x - BUS_LENGTH / 2 + OFFSET_FRONT_BACK + 40 + ARC_RADIUS, y, g2d);
-        drawWheelAndArc(x + BUS_LENGTH / 2 - OFFSET_FRONT_BACK - 50 - DOOR_WIDTH - ARC_RADIUS, y, g2d);
-
-        Polygon window_polygon = new Polygon();
-        window_polygon.addPoint(x - BUS_LENGTH / 2 + OFFSET_FRONT_BACK * 3, y - BUS_HEIGHT + OFFSET_FRONT_BACK * 2);
-        window_polygon.addPoint(x - BUS_LENGTH / 2 + OFFSET_FRONT_BACK * 2, y - ARC_RADIUS - 20);
-        window_polygon.addPoint(x + BUS_LENGTH / 2 - OFFSET_FRONT_BACK * 3, y - ARC_RADIUS - 20);
-        window_polygon.addPoint(x + BUS_LENGTH / 2 - OFFSET_FRONT_BACK * 3, y - BUS_HEIGHT + OFFSET_FRONT_BACK * 2);
-
-        g2d.setColor(GLASS_COLOR);
-        g2d.fillPolygon(window_polygon);
-
-        g2d.setColor(Color.BLACK);
-        g2d.setStroke(new BasicStroke(5));
-        g2d.drawPolygon(window_polygon);
-        for (int x0 = x - BUS_LENGTH / 2 + 100; x0 < x + BUS_LENGTH / 2; x0 += 125) {
-            g2d.drawLine(x0, y - BUS_HEIGHT + OFFSET_FRONT_BACK * 2, x0, y - ARC_RADIUS - 20);
-        }
-
-        g2d.setStroke(new BasicStroke());
-
-        //drawLabel(g2d);
-
-//        drawDoor(x - BUS_LENGTH / 2 + OFFSET_FRONT_BACK + 40 + ARC_RADIUS * 2 + 20, y - BUS_HEIGHT + OFFSET_FRONT_BACK * 2, DOOR_WIDTH, BUS_HEIGHT - 2 * OFFSET_FRONT_BACK -
-//                WINDOW_FRAME_THICKNESS, g2d);
-//        drawDoor(x + BUS_LENGTH / 2 - 40 - OFFSET_FRONT_BACK - DOOR_WIDTH, y - BUS_HEIGHT + OFFSET_FRONT_BACK * 2, DOOR_WIDTH, BUS_HEIGHT - 2 * OFFSET_FRONT_BACK -
-//                WINDOW_FRAME_THICKNESS, g2d);
-
-        drawLights(g2d);
+        drawBusSide(g2d, true, false);
+        drawBusSide(g2d, false, true);
     }
 
     private void drawWheelAndArc(int x0, int y0, Graphics g2d) {
@@ -150,8 +92,104 @@ public class Bus {
         g2d.fillRect(x0, y0, WINDOW_FRAME_THICKNESS * 2, height);
         g2d.fillRect(x0, y0 + height - WINDOW_FRAME_THICKNESS * 2, width, WINDOW_FRAME_THICKNESS * 2);
         g2d.fillRect(x0 + width - WINDOW_FRAME_THICKNESS * 2, y0, WINDOW_FRAME_THICKNESS * 2, height);
+//        g2d.setColor(GLASS_COLOR);
+//        g2d.fillRect(x0 + WINDOW_FRAME_THICKNESS * 2, y0 + WINDOW_FRAME_THICKNESS * 2,
+//                width - WINDOW_FRAME_THICKNESS * 4, height - WINDOW_FRAME_THICKNESS * 4);
+    }
+
+    private void drawBusSide(Graphics2D g2d, boolean drawDoors, boolean drawSeats) {
+
+        if (drawSeats) {
+            for (int x0 = x - BUS_LENGTH / 2 + 180; x0 < x + BUS_LENGTH / 2 - 100; x0 += 80) {
+                drawSeat(g2d, x0, y - ARC_RADIUS - 20, false);
+            }
+
+            int x0 = x - BUS_LENGTH / 2 + 70;
+
+            drawSeat(g2d, x0, y - ARC_RADIUS - 20, true);
+        }
+
+        g2d.setStroke(new BasicStroke());
+        g2d.setColor(MAIN_COLOR);
+
+        Polygon colorPolygon1 = new Polygon();
+        colorPolygon1.addPoint(x - BUS_LENGTH / 2, y);
+        colorPolygon1.addPoint(x - BUS_LENGTH / 2, y - ARC_RADIUS - 20);
+        colorPolygon1.addPoint(x + BUS_LENGTH / 2, y - ARC_RADIUS - 20);
+        colorPolygon1.addPoint(x + BUS_LENGTH / 2, y - 10);
+        colorPolygon1.addPoint(x + BUS_LENGTH / 2 - 40, y);
+        g2d.fillPolygon(colorPolygon1);
+
+        Polygon colorPolygon2 = new Polygon();
+        colorPolygon2.addPoint(x - BUS_LENGTH / 2, y - ARC_RADIUS - 20);
+        colorPolygon2.addPoint(x - BUS_LENGTH / 2 + OFFSET_FRONT_BACK, y - BUS_HEIGHT);
+        colorPolygon2.addPoint(x + BUS_LENGTH / 2 - OFFSET_FRONT_BACK, y - BUS_HEIGHT);
+        colorPolygon2.addPoint(x + BUS_LENGTH / 2, y - BUS_HEIGHT + 50);
+        colorPolygon2.addPoint(x + BUS_LENGTH / 2, y - ARC_RADIUS - 20);
+        colorPolygon2.addPoint(x + BUS_LENGTH / 2 - OFFSET_FRONT_BACK * 3, y - ARC_RADIUS - 20);
+        colorPolygon2.addPoint(x + BUS_LENGTH / 2 - OFFSET_FRONT_BACK * 3, y - BUS_HEIGHT + OFFSET_FRONT_BACK * 2);
+        colorPolygon2.addPoint(x - BUS_LENGTH / 2 + OFFSET_FRONT_BACK * 3, y - BUS_HEIGHT + OFFSET_FRONT_BACK * 2);
+        colorPolygon2.addPoint(x - BUS_LENGTH / 2 + OFFSET_FRONT_BACK * 2, y - ARC_RADIUS - 20);
+        g2d.fillPolygon(colorPolygon2);
+
+        drawWheelAndArc(x - BUS_LENGTH / 2 + OFFSET_FRONT_BACK + 40 + ARC_RADIUS, y, g2d);
+        drawWheelAndArc(x + BUS_LENGTH / 2 - OFFSET_FRONT_BACK - 50 - DOOR_WIDTH - ARC_RADIUS, y, g2d);
+
+
+        Polygon window_polygon = new Polygon();
+        window_polygon.addPoint(x - BUS_LENGTH / 2 + OFFSET_FRONT_BACK * 3, y - BUS_HEIGHT + OFFSET_FRONT_BACK * 2);
+        window_polygon.addPoint(x - BUS_LENGTH / 2 + OFFSET_FRONT_BACK * 2, y - ARC_RADIUS - 20);
+        window_polygon.addPoint(x + BUS_LENGTH / 2 - OFFSET_FRONT_BACK * 3, y - ARC_RADIUS - 20);
+        window_polygon.addPoint(x + BUS_LENGTH / 2 - OFFSET_FRONT_BACK * 3, y - BUS_HEIGHT + OFFSET_FRONT_BACK * 2);
+
         g2d.setColor(GLASS_COLOR);
-        g2d.fillRect(x0 + WINDOW_FRAME_THICKNESS * 2, y0 + WINDOW_FRAME_THICKNESS * 2,
-                width - WINDOW_FRAME_THICKNESS * 4, height - WINDOW_FRAME_THICKNESS * 4);
+        g2d.fillPolygon(window_polygon);
+
+        g2d.setColor(Color.BLACK);
+        g2d.setStroke(new BasicStroke(5));
+        g2d.drawPolygon(window_polygon);
+        for (int x0 = x - BUS_LENGTH / 2 + 100; x0 < x + BUS_LENGTH / 2; x0 += 125) {
+            g2d.drawLine(x0, y - BUS_HEIGHT + OFFSET_FRONT_BACK * 2, x0, y - ARC_RADIUS - 20);
+        }
+
+
+        g2d.setStroke(new BasicStroke());
+
+        if (drawDoors) {
+            drawDoor(x - BUS_LENGTH / 2 + OFFSET_FRONT_BACK + 40 + ARC_RADIUS * 2 + 20, y - BUS_HEIGHT + OFFSET_FRONT_BACK * 2, DOOR_WIDTH, BUS_HEIGHT - 2 * OFFSET_FRONT_BACK -
+                    WINDOW_FRAME_THICKNESS, g2d);
+            drawDoor(x + BUS_LENGTH / 2 - 40 - OFFSET_FRONT_BACK - DOOR_WIDTH, y - BUS_HEIGHT + OFFSET_FRONT_BACK * 2, DOOR_WIDTH, BUS_HEIGHT - 2 * OFFSET_FRONT_BACK -
+                    WINDOW_FRAME_THICKNESS, g2d);
+        }
+
+        drawLights(g2d);
+    }
+
+    private void drawSeat(Graphics2D g2d, int x0, int y0, boolean driver) {
+
+        g2d.setStroke(new BasicStroke());
+        g2d.setColor(Color.WHITE);
+        g2d.fillPolygon(new Polygon(new int[]{x0 - 20, x0, x0 + 11, x0 - 2}, new int[]{y0, y0, y0 - 40, y0 - 45}, 4));
+        int r = 7;
+        g2d.fillOval(x0 + 5 - r, y0 - 42 - r, 2 * r, 2 * r);
+        r = 14;
+        g2d.setColor(SKIN_COLOR);
+        g2d.fillOval(x0 + 2 - r, y0 - 55 - r, 2 * r, 2 * r);
+        if (driver) {
+            g2d.setColor(Color.WHITE);
+            g2d.fillPolygon(new int[]{x0 + 2 - r * 2 / 3, x0 + 2 - r, x0 + 2 + r, x0 + 2 + r /3}, new int[]{y0 - 55 - r * 2 / 3, y0 - 55 - r, y0 - 55 - r, y0 - 55 - r * 2 / 3}, 4);
+        }
+
+        g2d.setStroke(new BasicStroke(10));
+        g2d.setColor(Color.BLUE);
+        g2d.drawLine(x0, y0, x0 + 20, y0 - 60);
+
+        if(driver){
+            g2d.setColor(Color.BLACK);
+            g2d.drawLine(x0 - 30, y0, x0 - 40, y0 - 30);
+            g2d.setStroke(new BasicStroke(7));
+            g2d.drawLine(x0 - 35, y0 - 15, x0 - 55, y0);
+        }
+
     }
 }
